@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Particles.js y Burbujas en el Footer</title>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <style>
+    /* ---- Reset ---- */
+    body {
+      margin: 0;
+      font: normal 75% Arial, Helvetica, sans-serif;
+      background-color: #F5F7FA;
+      overflow-x: hidden;
+      height: 100vh;
+      font-family: 'Open Sans', sans-serif;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      grid-template-areas: "main" "footer";
+    }
+
+    canvas {
+      display: block;
+      vertical-align: bottom;
+    }
+
+    /* ---- particles.js container ---- */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 20% 50%;
+      z-index: 0; /* Asegura que las partículas estén en el fondo */
+      pointer-events: auto; /* Asegura que los clics se detecten correctamente */
+    }
+
+    /* Estilo del Footer */
+    .footer {
+      z-index: 2;
+      --footer-background: #008c9e;
+      display: grid;
+      position: relative;
+      grid-area: footer;
+      min-height: 12rem;
+    }
+
+    /* Estilo de las burbujas */
+    .bubbles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1rem;
+      background: var(--footer-background);
+      filter: url("#blob");
+      z-index: 3;
+    }
+
+    .bubble {
+      position: absolute;
+      left: var(--position, 50%);
+      background: var(--footer-background);
+      border-radius: 100%;
+      animation: bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s),
+                 bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+      transform: translate(-50%, 100%);
+    }
+
+    /* Contenido del Footer */
+    .content {
+      z-index: 4;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-gap: 4rem;
+      padding: 2rem;
+      background: var(--footer-background);
+      a, p {
+        color: #000000;
+        text-decoration: none;
+      }
+      b {
+        color: rgb(255, 255, 255);
+      }
+      p {
+        margin: 0;
+        font-size: .75rem;
+      }
+      > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        > div {
+          margin: 0.25rem 0;
+          > * {
+            margin-right: .5rem;
+          }
+        }
+        .image {
+          align-self: center;
+          width: 4rem;
+          height: 4rem;
+          margin: 0.25rem 0;
+          background-size: cover;
+          background-position: center;
+        }
+      }
+    }
+
+    @keyframes bubble-size {
+      0%, 75% {
+        width: var(--size, 4rem);
+        height: var(--size, 4rem);
+      }
+      100% {
+        width: 0rem;
+        height: 0rem;
+      }
+    }
+
+    @keyframes bubble-move {
+      0% {
+        bottom: -4rem;
+      }
+      100% {
+        bottom: var(--distance, 10rem);
+      }
+    }
+
+    svg {
+      position: fixed;
+      top: 100vh;
+    }
+
+    /* Estilos para el filtro de burbujas */
+    filter#blob {
+      feGaussianBlur:in="SourceGraphic" stdDeviation="10" result="blur";
+      feColorMatrix:in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob";
+    }
+  </style>
+</head>
+<body>
+    <nav>
+        <a>home</a>
+        <a>nsootros</a>
+        <a>home</a>
+        <a>home</a>
+    </nav>
+
+  <!-- Contenedor de particles.js -->
+  <div id="particles-js"></div>
+
+  <!-- Sección Principal -->
+  <div class="main"></div>
+
+  <!-- Footer con las burbujas y el contenido -->
+  <div class="footer">
+    <div class="bubbles">
+      <script>
+        for (var i = 0; i < 128; i++) {
+          var bubble = document.createElement('div');
+          bubble.classList.add('bubble');
+          bubble.style.setProperty('--size', (2 + Math.random() * 4) + 'rem');
+          bubble.style.setProperty('--distance', (6 + Math.random() * 4) + 'rem');
+          bubble.style.setProperty('--position', (-5 + Math.random() * 110) + '%');
+          bubble.style.setProperty('--time', (2 + Math.random() * 2) + 's');
+          bubble.style.setProperty('--delay', (-1 * (2 + Math.random() * 2)) + 's');
+          document.querySelector('.bubbles').appendChild(bubble);
+        }
+      </script>
+    </div>
+
+    <div class="content">
+      <div>
+        <b>Eldew</b>
+        <a href="#">Secuce</a>
+        <a href="#">Drupand</a>
+        <a href="#">Oceash</a>
+        <a href="#">Ugefe</a>
+        <a href="#">Babed</a>
+      </div>
+      
+        <a class="image" href="https://codepen.io/z-" target="_blank" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/happy.svg')"></a>
+        <p>©2019 Not Really</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filtro SVG para el efecto de las burbujas -->
+  <svg>
+    <defs>
+      <filter id="blob">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob"></feColorMatrix>
+      </filter>
+    </defs>
+  </svg>
+
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 100, density: { enable: true, value_area: 2000 } },
+        color: { value: "#008c9e" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#008c9e", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 3, direction: "none", out_mode: "out" }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 200, line_linked: { opacity: 1 } },
+          push: { particles_nb: 10 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+</html>

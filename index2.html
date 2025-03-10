@@ -5,49 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Particles.js y Burbujas en el Footer</title>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <link rel="stylesheet" href="style.css">
   <style>
     /* ---- Reset ---- */
-    body {
+    body, html {
+      color:white;
       margin: 0;
-      font: normal 75% Arial, Helvetica, sans-serif;
-      background-color: #F5F7FA;
-      overflow-x: hidden;
-      height: 100vh;
-      font-family: 'Open Sans', sans-serif;
-      display: grid;
-      grid-template-rows: 1fr auto;
-      grid-template-areas: "main" "footer";
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
-    canvas {
-      display: block;
-      vertical-align: bottom;
-    }
-
-    /* ---- particles.js container ---- */
+    /* Animación de partículas en el fondo */
     #particles-js {
-      position: absolute;
+      position: fixed; /* Fijo para que cubra toda la pantalla */
       width: 100%;
       height: 100%;
-      background-color: #ffffff;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: 20% 50%;
-      z-index: 0; /* Asegura que las partículas estén en el fondo */
-      pointer-events: auto; /* Asegura que los clics se detecten correctamente */
+      background-color: #000;
+      z-index: 1; /* Capa inferior */
     }
 
-    /* Estilo del Footer */
+    /* Contenido principal */
+    .main-content {
+      position: relative; /* Posición relativa para superponer */
+      z-index: 2; /* Capa superior */
+      background: rgba(255, 255, 255, 0); /* Fondo semitransparente */
+      padding: 20px;
+      margin: 20px;
+      border-radius: 10px;
+      flex: 1; /* Ocupa el espacio restante */
+    }
+
+    /* Footer con burbujas (estilo original) */
     .footer {
-      z-index: 2;
-      --footer-background: #008c9e;
-      display: grid;
+      z-index: 3;
+      --footer-background: #27798B;
       position: relative;
-      grid-area: footer;
       min-height: 12rem;
+      width: 100%;
     }
 
-    /* Estilo de las burbujas */
     .bubbles {
       position: absolute;
       top: 0;
@@ -56,7 +54,7 @@
       height: 1rem;
       background: var(--footer-background);
       filter: url("#blob");
-      z-index: 3;
+      z-index: 4;
     }
 
     .bubble {
@@ -69,44 +67,51 @@
       transform: translate(-50%, 100%);
     }
 
-    /* Contenido del Footer */
     .content {
-      z-index: 4;
+      z-index: 5;
       display: grid;
       grid-template-columns: 1fr auto;
       grid-gap: 4rem;
       padding: 2rem;
       background: var(--footer-background);
-      a, p {
-        color: #000000;
-        text-decoration: none;
-      }
-      b {
-        color: rgb(255, 255, 255);
-      }
-      p {
-        margin: 0;
-        font-size: .75rem;
-      }
-      > div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        > div {
-          margin: 0.25rem 0;
-          > * {
-            margin-right: .5rem;
-          }
-        }
-        .image {
-          align-self: center;
-          width: 4rem;
-          height: 4rem;
-          margin: 0.25rem 0;
-          background-size: cover;
-          background-position: center;
-        }
-      }
+    }
+
+    .content a, .content p {
+      color: #000000;
+      text-decoration: none;
+    }
+
+    .content b {
+      color: #ffffff;
+    }
+
+    .content p {
+      margin: 0;
+      font-size: .75rem;
+    }
+
+    .content > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .content > div > div {
+      /*margin: 0.25rem 0;*/
+      margin: 5px;
+    }
+
+    .content > div > div > * {
+      margin-right: 5px;
+    }
+
+    .content .image {
+      align-self: center;
+      width: 4rem;
+      height: 4rem;
+      margin: 0.25rem 0;
+      background-size: cover;
+      background-position: center;
     }
 
     @keyframes bubble-size {
@@ -133,27 +138,70 @@
       position: fixed;
       top: 100vh;
     }
-
-    /* Estilos para el filtro de burbujas */
-    filter#blob {
-      feGaussianBlur:in="SourceGraphic" stdDeviation="10" result="blur";
-      feColorMatrix:in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob";
-    }
   </style>
 </head>
 <body>
-    <nav>
-        <a>home</a>
-        <a>nsootros</a>
-        <a>home</a>
-        <a>home</a>
-    </nav>
-
   <!-- Contenedor de particles.js -->
   <div id="particles-js"></div>
 
-  <!-- Sección Principal -->
-  <div class="main"></div>
+  <!-- Contenido Principal -->
+  <nav>
+    <a><img class="logoImg" src="logo.png" alt="logo"></a>
+    <a href="#">Inicio</a>
+    <a href="#">Nosotros</a>
+    <a href="#">Campus</a>
+    <a href="#">FAQ</a>
+    <a href="#">Contacto</a>
+  </nav>
+  <div class="main-content">
+    
+    <h1>Particles.js y Burbujas en el Footer</h1>
+    <p>Esta es la primera seccion </p>
+    <p>.</p> 
+    <p>...</p>
+    <p>...</p>
+  </div>
+  <div class="main-content">
+    
+    <h1>Particles.js y Burbujas en el Footer</h1>
+    <p>...</p>
+    <p>...</p> 
+    <p>...</p>
+    <p>...</p>
+  </div>
+ 
+  <div class="main-content">
+    
+    <h1>Particles.js y Burbujas en el Footer</h1>
+    <p>...</p>
+    <p>...</p> 
+    <p>...</p>
+    <p>...</p>
+  </div>
+  <div class="main-content">
+    
+    <h1>Particles.js y Burbujas en el Footer</h1>
+    <p>...</p>
+    <p>...</p> 
+    <p>...</p>
+    <p>...</p>
+  </div>
+  <div class="main-content">
+    
+    <h1>Particles.js y Burbujas en el Footer</h1>
+    <p>...</p>
+    <p>...</p> 
+    <p>...</p>
+    <p>...</p>
+  </div>
+  <div class="main-content">
+    
+    <h1>Particles.js y Burbujas en el Footer</h1>
+    <p>...</p>
+    <p>...</p> 
+    <p>...</p>
+    <p>...</p>
+  </div>
 
   <!-- Footer con las burbujas y el contenido -->
   <div class="footer">
@@ -176,12 +224,9 @@
       <div>
         <b>Eldew</b>
         <a href="#">Secuce</a>
-        <a href="#">Drupand</a>
-        <a href="#">Oceash</a>
-        <a href="#">Ugefe</a>
-        <a href="#">Babed</a>
+
       </div>
-      
+      <div>
         <a class="image" href="https://codepen.io/z-" target="_blank" style="background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/199011/happy.svg')"></a>
         <p>©2019 Not Really</p>
       </div>
@@ -201,23 +246,23 @@
   <script>
     particlesJS("particles-js", {
       particles: {
-        number: { value: 100, density: { enable: true, value_area: 2000 } },
-        color: { value: "#008c9e" },
+        number: { value: 100, density: { enable: true, value_area: 1000 } },
+        color: { value: "#FFFFFF" },
         shape: { type: "circle" },
         opacity: { value: 0.5 },
         size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#008c9e", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 3, direction: "none", out_mode: "out" }
+        line_linked: { enable: true, distance: 150, color: "#FFFFFF", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 4, direction: "none", out_mode: "out" }
       },
       interactivity: {
         detect_on: "canvas",
         events: {
-          onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "push" }
+          onhover: { enable: true, mode: "grab" }, /* Efecto al pasar el mouse */
+          onclick: { enable: true, mode: "push" } /* Efecto al hacer clic */
         },
         modes: {
           grab: { distance: 200, line_linked: { opacity: 1 } },
-          push: { particles_nb: 10 }
+          push: { particles_nb: 10 } /* Número de partículas generadas al hacer clic */
         }
       },
       retina_detect: true

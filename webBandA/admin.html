@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador - Bits & Atoms</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="admin.js"></script>
+    
+    <style>
+        /* Estilo general */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Barra de navegación */
+        nav {
+            background-color: #000000;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contenedor de login */
+        #login-container {
+            width: 300px;
+            margin: 20px auto;
+            background: rgb(30, 30, 30);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 150px rgb(129, 129, 129);
+            text-align: center;
+            border: 1px solid #ffffff;
+            margin-top: 12%;
+        }
+
+        #login-container h2 {
+            margin-bottom: 15px;
+        }
+
+        #login-container input {
+            width: 80%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #000000;
+            border-radius: 5px;
+        }
+
+        #login-container button {
+            width: 50%;
+            padding: 10px;
+            background: #11467a;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 15px;
+        }
+
+        #login-container button:hover {
+            background: #426589;
+            color: rgb(0, 0, 0);
+        }
+
+        /* Panel de Administración */
+        #admin-panel {
+            max-width: 90%;
+            margin: 50px auto;
+            background: rgb(27, 27, 27);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgb(68, 68, 68);
+        }
+
+        section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background: #333333;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #ffffff;
+        }
+
+        button {
+            padding: 10px;
+            background: #238578;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        input, textarea {
+            width: 80%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Estilo de las imágenes en la galería */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            background: rgb(0, 0, 0);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #02a2a2;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="login-container">
+        <h2>Iniciar Sesión</h2>
+        <input type="text" id="username" placeholder="Usuario">
+        <input type="password" id="password" placeholder="Contraseña">
+        <button onclick="login()">Ingresar</button>
+        <p id="login-error" style="color: red; display: none;">Usuario o contraseña incorrectos</p>
+    </div>
+    
+    <div id="admin-panel" style="display: none;">
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="admin.html">Administrador</a></li>
+                <li><button onclick="logout()">Cerrar Sesión</button></li>
+            </ul>
+        </nav>
+    <h1>Panel de Administración</h1>
+
+    <!-- Sección Testimonios -->
+    <section>
+        <h2>Gestionar Testimonios</h2>
+        <ul id="testimonial-list"></ul>
+        <textarea id="new-testimonial" placeholder="Nuevo testimonio"></textarea>
+        <input id="new-author" type="text" placeholder="Autor">
+        <button onclick="addTestimonial()">Añadir Testimonio</button>
+        <div id="testimonials-container">
+            <!-- Los testimonios se generarán aquí con JavaScript -->
+        </div>
+    </section>
+
+    <!-- Sección Galería Campus -->
+    <section>
+        <h2>Gestionar Galería del Campus</h2>
+        <ul id="campus-gallery"></ul>
+        <input type="file" id="new-campus-file" accept="image/*">
+        <button onclick="addCampusPhoto()">Subir Foto</button>
+    </section>
+
+    <!-- Sección Multimedia (Galería + Podcasts) -->
+    <section>
+        <h2>Gestionar Multimedia</h2>
+        <ul id="multimedia-gallery"></ul>
+        <input id="new-multimedia-img" type="text" placeholder="URL de imagen">
+        <button onclick="addMultimediaImage()">Añadir Imagen</button>
+
+        <h3>Gestionar Podcasts</h3>
+        <ul id="podcast-list"></ul>
+        <input id="new-podcast-title" type="text" placeholder="Título del podcast">
+        <input id="new-podcast-cover" type="text" placeholder="URL de portada">
+        <button onclick="addPodcast()">Añadir Podcast</button>
+    </section>
+
+    <!-- Sección Mentores -->
+    <section>
+        <h2>Gestionar Mentores</h2>
+        <ul id="mentor-list"></ul>
+        <input id="new-mentor-name" type="text" placeholder="Nombre del mentor">
+        <input id="new-mentor-expertise" type="text" placeholder="Especialidad">
+        <button onclick="addMentor()">Añadir Mentor</button>
+    </section>
+
+    
+ </body>
+    </div>
+    <footer>
+        <p>&copy; 2025 Bits & Atoms</p>
+    </footer>
+
+    <script src="admin.js"></script>
+</html>

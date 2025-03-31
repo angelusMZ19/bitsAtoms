@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bits & Atoms</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script defer src="admin.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        .about {
+            display: flex;
+            align-items: center;
+            padding: 50px;
+            gap: 20px;
+        }
+        .about img {
+            width: 300px;
+            height: auto;
+        }
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px;
+        }
+        .feature {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .testimonials {
+            text-align: center;
+            padding: 50px;
+        }
+        .testimonial {
+            background: #333;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+        }
+    </style>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bits & Atoms</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header >
+        <div id="particles-js"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="campus.html">Campus</a></li>
+                <li><a href="multimedia.html">Multimedia</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="inscribete.html">Inscríbete</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Bits & Atoms</h1>
+            <p>Conectando ideas, creando futuros: Formación en IA e </br>IoT para Líderes digitales.</p>
+        </div>
+    </header>
+    <section class="carruselIndex">
+        <div id="carruselIndex"><img class="carruselIndex" src="assets/carruselimg.png" alt="carruselIndex" style="height: 500px; width: 100%;"></div>
+    </section>
+    <section class="about" style="padding:1rem;">
+        <img style="height: 500px;width: 500px; padding:2rem;" src="/assets/aboutUs.avif" alt="About Us" >
+        <div class="text">
+            <h2><a href="nosotros.html" style="color: aliceblue;">A few about us</a></h2>
+            <p style="height: 150px;padding:2rem;">Explicamos qué es el objetivo de Bits and Atoms, zb
+                con formación de equipo interdisciplinario...</p>
+        </div>
+    </section>
+    <section class="features">
+        <div id="features"><img class="topic" src="assets/topic.png" alt="logo" style="height: 150px; padding:2rem;"></div>
+        <div id="features"><img class="topic" src="assets/topic.png" alt="logo" style="height: 150px;padding:2rem;"></div>
+        <div id="features"><img class="topic" src="assets/topic.png" alt="logo" style="height: 150px;padding:2rem;"></div>
+        <div id="features"><img class="topic" src="assets/topic.png" alt="logo" style="height: 150px;padding:2rem; border-radius:20px;"></div>
+    </section>
+    <section>
+        <div>
+            <h2>Nuestro Equipo</h2>
+            <p style="height: 150px;padding:2rem;">Conformado por personal altamente capacitado</p>
+            <button style="background-color: aqua; border-radius:15px; height:50px; width:100px"><a href="campus.html" style="color: rgb(48, 125, 192);">Conocenos</a></button>
+
+        </div>
+        <div>
+            <div id="features"><img class="topic" src="assets/topic.png" alt="logo" style="height: 150px; padding:2rem;"></div>
+        
+
+        </div>
+        
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
+        <a href="admin.html">Acceso Administrador</a>
+    </footer>
+
+    
+    <script>
+        function loadTestimonials() {
+            let testimonials = JSON.parse(localStorage.getItem("testimonials")) || [];
+            let container = document.getElementById("testimonial-carousel");
+
+            if (!container) return;
+            container.innerHTML = "";
+
+            testimonials.forEach((testimonial) => {
+                let div = document.createElement("div");
+                div.classList.add("testimonial");
+                div.innerHTML = `<p>"${testimonial.text}"</p><span>- ${testimonial.user}</span>`;
+                container.appendChild(div);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadTestimonials);
+    </script>
+</body>
+</html>

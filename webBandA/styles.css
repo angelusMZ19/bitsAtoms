@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+body {
+    margin: 0;
+    font-family: "Krona One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #000000;
+    color: white;
+    /* padding-top: 60px; */
+}
+
+header {
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    position: relative;
+    text-align: center;
+    padding: 50px 20px;
+    overflow: hidden;
+}
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+.hero {
+    font-family: "Krona One", sans-serif;
+    font-size: large;
+    font-style: normal;
+    position: relative;
+    z-index: 1;
+    margin-top: 15%;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.205); /* Fondo oscuro con transparencia */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    padding: 25px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding-inline: 70px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #00bcd4; /* Cambia de color al pasar el mouse */
+}
+
+
+
+.hero h1 {
+    font-size: 5rem;
+    color:#00F5ED;
+}
+.gallery .grid {
+    display: flex;
+    gap: 10px;
+}
+.carousel {
+    display: flex;
+    align-items: center;
+}
+/*  */
+#login-container {
+    text-align: center;
+    margin: 100px auto;
+    width: 300px;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
+}
+
+#login-container input {
+    width: 80%;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#login-container button {
+    width: 50%;
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+#admin-panel {
+    padding: 20px;
+}
+
+section {
+    margin: 20px 0;
+    padding: 10px;
+    background: #141414;
+    border-radius: 10px;
+}
+
+.features {
+    height: 200px;
+    margin: 25px 0;
+    padding: 10px;
+    background: #000000;
+    border-radius: 10px;
+}
+#features {
+    align-items : center;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    border-radius: 20px;
+}
+.topic {
+    margin: 20px 0;
+    padding: 30px;
+    background: #3d3d3d;
+    border-radius: 10px;
+}
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #02a2a2;
+    color: white;
+    margin-top: 20px;
+}
+/* id es#
+y class es  . */

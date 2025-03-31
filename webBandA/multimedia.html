@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia - Bits & Atoms</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="particles-js"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="campus.html">Campus</a></li>
+                <li><a href="multimedia.html">Multimedia</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="inscribete.html">Inscríbete</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Multimedia</h1>
+        </div>
+    </header>
+
+    <h1>Galería Multimedia</h1>
+    <div id="media-gallery" class="gallery"></div>
+
+    <h1>Podcasts</h1>
+    <div id="podcast-list"></div>
+
+    <footer>
+        <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
+        <a href="admin.html">Acceso Administrador</a>
+    </footer>
+
+    <script>
+        function loadMedia() {
+            let media = JSON.parse(localStorage.getItem("multimedia")) || [];
+            let container = document.getElementById("media-gallery");
+
+            if (!container) return;
+            container.innerHTML = "";
+
+            media.forEach((item) => {
+                let mediaElement;
+                if (item.endsWith(".mp4")) {
+                    mediaElement = document.createElement("video");
+                    mediaElement.src = item;
+                    mediaElement.controls = true;
+                } else {
+                    mediaElement = document.createElement("img");
+                    mediaElement.src = item;
+                }
+                container.appendChild(mediaElement);
+            });
+        }
+
+        function loadPodcasts() {
+            let podcasts = JSON.parse(localStorage.getItem("podcasts")) || [];
+            let container = document.getElementById("podcast-list");
+
+            if (!container) return;
+            container.innerHTML = "";
+
+            podcasts.forEach((podcast) => {
+                let div = document.createElement("div");
+                div.classList.add("podcast-item");
+                div.innerHTML = `<strong>${podcast.title}</strong> - <a href="${podcast.url}" target="_blank">Escuchar</a>`;
+                container.appendChild(div);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadMedia();
+            loadPodcasts();
+        });
+    </script>
+</body>
+</html>

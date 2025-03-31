@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bits & Atoms</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
+        }
+        header {
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            position: relative;
+            text-align: center;
+            padding: 50px 20px;
+            overflow: hidden;
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        .hero {
+            position: relative;
+            z-index: 1;
+        }
+        nav ul {
+            margin-top: auto;
+            list-style: none;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero h1 {
+            font-size: 3rem;
+        }
+        .about {
+            display: flex;
+            align-items: center;
+            padding: 50px;
+            gap: 20px;
+        }
+        .about img {
+            width: 300px;
+            height: auto;
+        }
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px;
+        }
+        .feature {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .testimonials {
+            text-align: center;
+            padding: 50px;
+        }
+        .testimonial {
+            background: #333;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="particles-js"></div>
+        <nav>
+            <ul>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Campus</a></li>
+                <li><a href="#">Multimedia</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Inscríbete</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Bits & Atoms</h1>
+            <p>Conectando ideas, creando futuros: Formación en IA e IoT para Líderes digitales.</p>
+        </div>
+    </header>
+    <section class="about">
+        <img src="about-image.jpg" alt="About Us">
+        <div class="text">
+            <h2>A few about us</h2>
+            <p>Explicamos qué es el objetivo de Bits and Atoms, conformación de equipo interdisciplinario...</p>
+        </div>
+    </section>
+    <section class="features">
+        <div class="feature">Lorem Ipsum</div>
+        <div class="feature">Lorem Ipsum</div>
+        <div class="feature">Lorem Ipsum</div>
+        <div class="feature">Lorem Ipsum</div>
+    </section>
+    <section class="testimonials">
+        <div class="testimonial">
+            <p>"Nuestra experiencia en Bits And Atoms ¿bromas? Es un papucho, su cara parece tallada por los mismos ángeles"</p>
+            <span class="user">USER</span>
+            <span class="degree">Degree</span>
+        </div>
+        <div class="testimonial">
+            <p>"Nuestra experiencia en Bits And Atoms ¿bromas? Es un papucho, su cara parece tallada por los mismos ángeles"</p>
+            <span class="user">USER</span>
+            <span class="degree">Degree</span>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
+    </footer>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 1000 } },
+                color: { value: "#FFFFFF" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5 },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#FFFFFF", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 4, direction: "none", out_mode: "out" }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" }
+                },
+                modes: {
+                    grab: { distance: 200, line_linked: { opacity: 1 } },
+                    push: { particles_nb: 10 }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+</body>
+</html>

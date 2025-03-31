@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus - Bits & Atoms</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="particles-js"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="campus.html">Campus</a></li>
+                <li><a href="multimedia.html">Multimedia</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="inscribete.html">Inscríbete</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h1>Campus</h1>
+        </div>
+    </header>
+
+    <h1>Galería del Campus</h1>
+    <div id="campus-gallery" class="gallery"></div>
+
+    <section class="testimonials">
+        <h2>Testimonios</h2>
+        <div id="testimonial-carousel" class="carousel"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
+        <a href="admin.html">Acceso Administrador</a>
+    </footer>
+
+    <script>
+        function loadCampusPhotos() {
+            let photos = JSON.parse(localStorage.getItem("campusPhotos")) || [];
+            let container = document.getElementById("campus-gallery");
+
+            if (!container) return;
+            container.innerHTML = "";
+
+            photos.forEach((photo) => {
+                let img = document.createElement("img");
+                img.src = photo;
+                img.classList.add("gallery-img");
+                container.appendChild(img);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadCampusPhotos);
+    </script>
+    
+</body>
+</html>

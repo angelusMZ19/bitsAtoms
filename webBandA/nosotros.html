@@ -1,15 +1,223 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosotros - Bits & Atoms</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script defer src="script.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bits & Atoms</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script defer src="script.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <style>
+            .scroll-bar {
+                text-align: center;
+                padding: 30px 20px;
+                background-color: #02a2a2;
+                margin: 20px auto;
+                max-width: 100%;
+                border-radius: 8px;
+            }
+
+            .scroll-bar button {
+                background-color: #333;
+                color: white;
+                border: none;
+                padding: 12px 25px;
+                margin: 10px;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+                font-size: 1rem;
+            }
+
+            .scroll-bar button:hover {
+                background-color: #555;
+            }
+
+            #content-box {
+                background-color: #02a2a2;
+                color: rgb(0, 0, 0);
+                padding: 30px;
+                margin: 20px auto;
+                max-width: 2000px;
+                border-radius: 8px;
+                text-align: left;
+            }
+
+            #content-text {
+                font-size: 1.1rem;
+            }
+
+            .about {
+                padding: 40px 20px;
+                background-color: #c93d3d;
+                color: white;
+                text-align: center;
+                margin: 20px auto;
+                max-width: 800px;
+                border-radius: 8px;
+            }
+
+            #team-section {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 30px 20px;
+                margin: 20px auto;
+                max-width: 800px;
+            }
+
+            .mentor {
+                background-color: #222;
+                color: white;
+                padding: 20px;
+                margin: 15px;
+                border-radius: 8px;
+                width: 300px;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .mentor strong {
+                font-size: 1.2rem;
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            footer {
+                text-align: center;
+                padding: 20px;
+                background: #000;
+                color: white;
+                margin-top: 40px;
+            }
+
+            .profile-card {
+                width: 300px;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                margin: 10px;
+            }
+
+            .header {
+                position: relative;
+                height: 100px;
+            }
+
+            .header .gradient {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to right, #02a2a2, #000000);
+            }
+
+            .header .add-button {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                color: white;
+                font-size: 1.5em;
+                cursor: pointer;
+            }
+
+            .header .add-button:hover {
+                color: #02a2a2;
+                transition: color 0.3s ease;
+            }
+            .photo {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                overflow: hidden;
+                margin: -50px auto 10px;
+                border: 3px solid white;
+                position: relative;
+            }
+
+            .photo img {
+                width: 100%;
+                height: auto;
+                display: block;
+                object-fit: contain;
+            }
+
+            .info {
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .info .name {
+                margin: 5px 0;
+                font-weight: bold;
+            }
+
+            .info .role {
+                margin: 0;
+                color: #888;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: space-around;
+                padding: 20px;
+                border-top: 1px solid #eee;
+            }
+
+            .social-icons .icon {
+                text-decoration: none;
+                color: #333;
+                font-size: 1.2em;
+            }
+
+            .description {
+                padding: 20px;
+                display: none;
+                border-top: 1px solid #eee;
+            }
+
+            .profile-card.show-description .description {
+                opacity: 1;
+            }
+
+            .profile-card.show-description .content {
+                filter: blur(5px);
+            }
+
+            .profile-card .description {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            #team-members {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 20px;
+            }
+
+            .profile-card {
+                width: 300px;
+                margin: 10px;
+            }
+        </style>
 </head>
 <body>
     <header>
@@ -26,52 +234,144 @@
         </nav>
         <div class="hero">
             <h1>Nosotros</h1>
-           
         </div>
     </header>
-
-<section class="scroll-bar">
-    <button onclick="showContent('mision')">Misión</button>
-    <button onclick="showContent('vision')">Visión</button>
-    <button onclick="showContent('valores')">Valores</button>
-
-    <div id="content-box">
-        <p id="content-text">Selecciona una opción</p>
-    </div>
-</section>
-
-
     <section class="about">
-        
-    </section>
-    <h2>Nuestro Equipo</h2>
-        <div id="team-section">
-            <!-- Aquí se mostrarán los mentores desde el admin -->
+        <div>
         </div>
+        <div>
+        </div>
+    </section>
 
-        <footer>
-            <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
-            <a href="admin.html">Acceso Administrador</a>
-        </footer>
+    <section class="scroll-bar">
+        <button onclick="showContent('mision')">Misión</button>
+        <button onclick="showContent('vision')">Visión</button>
+        <button onclick="showContent('valores')">Valores</button>
 
+        <div id="content-box">
+            <p id="content-text" style="text-align: center;">...</p>
+        </div>
+    </section>
+
+    <h2>Nuestro Equipo</h2>
+    <div id="team-members">
+        <div class="profile-card">
+            <div class="header">
+                <div class="gradient"></div>
+                <div class="add-button">+</div>
+            </div>
+            <div class="photo">
+                <img src="assets/imagen1.png" alt="Foto de perfil">
+            </div>
+            <div class="info">
+                <h2 class="name">Daniel Vidal</h2>
+                <p class="role">Abogado</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="icon"></a>
+                <a href="#" class="icon">✉️</a>
+                <a href="#" class="icon">in</a>
+                <a href="#" class="icon"></a>
+            </div>
+            <div class="description">
+                <p style="color: #000;">Daniel es un abogado muy apasionado por su trabajo demostrando las vulnerabilidades presentes en este mundo de las TIC, con su amplia experiencia con clientes en esta área demuestra sus conocimientos plenos en el tema.</p>
+            </div>
+        </div>
+        <div class="profile-card">
+            <div class="header">
+                <div class="gradient"></div>
+                <div class="add-button">+</div>
+            </div>
+            <div class="photo">
+                <img src="assets/imagen2.png" alt="Foto de perfil">
+            </div>
+            <div class="info">
+                <h2 class="name">Marc Segarra</h2>
+                <p class="role">Diseñador Web</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="icon"></a>
+                <a href="#" class="icon">✉️</a>
+                <a href="#" class="icon">in</a>
+                <a href="#" class="icon"></a>
+            </div>
+            <div class="description">
+                <p style="color: #000;">Marc es un profesional en diseño web muy apasionado por su trabajo y busca demostrar las formas fáciles de desarrollar la creatividad en este mundo en el que la IA se está acaparando todo.</p>
+            </div>
+        </div>
+        <div class="profile-card">
+            <div class="header">
+                <div class="gradient"></div>
+                <div class="add-button">+</div>
+            </div>
+            <div class="photo">
+                <img src="assets/imagen3.png" alt="Foto de perfil">
+            </div>
+            <div class="info">
+                <h2 class="name">Sara López</h2>
+                <p class="role">Desarrolladora de Software</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="icon"></a>
+                <a href="#" class="icon">✉️</a>
+                <a href="#" class="icon">in</a>
+                <a href="#" class="icon"></a>
+            </div>
+            <div class="description">
+                <p style="color: #000;">Sara es una desarrolladora de software con amplia experiencia en la creación de aplicaciones robustas y eficientes. Su pasión por la tecnología la impulsa a explorar nuevas soluciones y desafíos.</p>
+            </div>
+        </div>
+        <div class="profile-card">
+            <div class="header">
+                <div class="gradient"></div>
+                <div class="add-button">+</div>
+            </div>
+            <div class="photo">
+                <img src="assets/imagen4.png" alt="Foto de perfil">
+            </div>
+            <div class="info">
+                <h2 class="name">Carlos Martínez</h2>
+                <p class="role">Experto en Ciberseguridad</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="icon"></a>
+                <a href="#" class="icon">✉️</a>
+                <a href="#" class="icon">in</a>
+                <a href="#" class="icon"></a>
+            </div>
+            <div class="description">
+                <p style="color: #000;">Carlos es un experto en ciberseguridad con un profundo conocimiento en la protección de sistemas y datos. Su enfoque proactivo y su capacidad para anticipar amenazas lo convierten en un activo invaluable para nuestro equipo.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
+        <a href="admin.html">Acceso Administrador</a>
+    </footer>
+
+
+
+    <script src="script.js"></script>
     <script>
-        function loadMentors() {
-            let mentors = JSON.parse(localStorage.getItem("mentors")) || [];
-            let container = document.getElementById("team-section");
-
-            if (!container) return;
-            container.innerHTML = "";
-
-            mentors.forEach((mentor) => {
-                let div = document.createElement("div");
-                div.classList.add("mentor");
-                div.innerHTML = `<strong>${mentor.name}</strong> - ${mentor.expertise}`;
-                container.appendChild(div);
-            });
+       
+        function showContent(content) {
+            let contentText = document.getElementById('content-text');
+            if (content === 'mision') {
+                contentText.textContent = 'Nuestra misión es proporcionar una experiencia educativa innovadora y de alta calidad que prepare a los estudiantes para los desafíos del mundo digital.';
+            } else if (content === 'vision') {
+                contentText.textContent = 'Aspiramos a ser líderes en la formación de profesionales en tecnología, fomentando la creatividad y el pensamiento crítico.';
+            } else if (content === 'valores') {
+                contentText.textContent = 'Nos guiamos por la excelencia, la integridad, la innovación y el compromiso con el aprendizaje continuo.';
+            }
         }
-
-        document.addEventListener("DOMContentLoaded", loadMentors);
+        const profileCards = document.querySelectorAll('.profile-card');
+profileCards.forEach(card => {
+    const addButton = card.querySelector('.add-button');
+    addButton.addEventListener('click', function() {
+        this.classList.toggle('show-description');
+    });
+});
     </script>
-    
 </body>
 </html>

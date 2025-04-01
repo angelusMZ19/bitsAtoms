@@ -61,5 +61,24 @@
         document.addEventListener("DOMContentLoaded", loadCampusPhotos);
     </script>
     
+    <script>
+        function loadTestimonials() {
+            let testimonials = JSON.parse(localStorage.getItem("testimonials")) || [];
+            let container = document.getElementById("testimonial-carousel");
+
+            if (!container) return;
+            container.innerHTML = "";
+
+            testimonials.forEach((testimonial) => {
+                let div = document.createElement("div");
+                div.classList.add("testimonial");
+                div.innerHTML = `<p>"${testimonial.text}"</p><span>- ${testimonial.user}</span>`;
+                container.appendChild(div);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadTestimonials);
+    </script>
+    
 </body>
 </html>

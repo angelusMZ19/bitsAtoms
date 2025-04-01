@@ -6,7 +6,7 @@
     <title>Bits & Atoms</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script defer src="admin.js"></script>
+    <script defer src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -14,57 +14,110 @@
         .about {
             display: flex;
             align-items: center;
-            padding: 50px;
-            gap: 20px;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+            background-color: #000000;
+            color: aliceblue;
+            flex-wrap: wrap;
         }
+
         .about img {
-            width: 300px;
-            height: auto;
+            height: 400px;
+            width: 400px;
+            border-radius: 15px; /* Usando 15px de radio para unificar */
+            padding: 2rem;
+            object-fit: cover;
         }
+
+        .about .text h2 a {
+            color: aliceblue;
+            text-decoration: none;
+            font-size: 1.8rem;
+            transition: color 0.3s;
+        }
+
+        .about .text h2 a:hover {
+            color: #00aaff;
+        }
+
+        .about p {
+            padding: 1rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about img {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
         .features {
             display: flex;
             justify-content: center;
             gap: 20px;
             padding: 50px;
         }
+
         .feature {
-            background: #222;
+            background-color: #3d3d3d;
             padding: 20px;
             border-radius: 10px;
         }
-        .testimonials {
-            text-align: center;
-            padding: 50px;
+
+        .carousel-container {
+            overflow: hidden;
+            width: 100%; /* Ajuste a 100% para hacerlo flexible */
+            max-width: 940px; /* Ancho máximo para evitar que se vuelva demasiado grande */
         }
-        .testimonial {
-            background: #333;
-            padding: 20px;
-            margin: 10px;
-            border-radius: 10px;
+
+        .carousel {
+            display: flex;
+            width: max-content;
         }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #000;
+
+        .carousel .group {
+            display: flex;
+            gap: 0;
+            animation: scrolling 15s linear infinite;
+            will-change: transform;
+        }
+
+        .carousel img {
+            width: 400px;
+            margin: 20px;
+        }
+
+        @keyframes scrolling {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-440px * 4)); /* Ajuste basado en el ancho de la imagen + márgenes */
+            }
+        }
+
+        .carousel:hover .group {
+            animation-play-state: paused;
+        }
+
+        .carruselIndex img {
+            height: 500px;
+            width: 100%;
         }
     </style>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bits & Atoms</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script defer src="script.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header >
+    <header>
         <div id="particles-js"></div>
         <nav>
             <ul>
@@ -82,60 +135,49 @@
         </div>
     </header>
     <section class="carruselIndex">
-        <div id="carruselIndex"><img class="carruselIndex" src="assets/carruselimg.png" alt="carruselIndex" style="height: 500px; width: 100%;"></div>
+        <div id="carruselIndex"><img class="carruselIndex" src="assets/carruselimg.png" alt="carruselIndex"></div>
     </section>
     <section class="about" style="padding:1rem;">
-        <img style="height: 500px;width: 500px; padding:2rem;" src="/assets/aboutUs.avif" alt="About Us" >
+        <img src="assets/aboutus.png" alt="About Us">
         <div class="text">
             <h2><a href="nosotros.html" style="color: aliceblue;">A few about us</a></h2>
-            <p style="height: 150px;padding:2rem;">Explicamos qué es el objetivo de Bits and Atoms, zb
-                con formación de equipo interdisciplinario...</p>
+            <p style="height: 150px;padding:2rem;">Explicamos qué es el objetivo de Bits and Atoms, con formación de equipo interdisciplinario...</p>
         </div>
     </section>
-    <section class="features">
+    <section class="features" style="padding:1rem; background-color: #3d3d3d;">
         <div id="features"><img class="topic" src="assets/topic.png" alt="logo" style="height: 150px; padding:2rem;"></div>
         <div id="features"><img class="topic" src="assets/topic.png" alt="logo" style="height: 150px;padding:2rem;"></div>
         <div id="features"><img class="topic" src="assets/topic.png" alt="logo" style="height: 150px;padding:2rem;"></div>
         <div id="features"><img class="topic" src="assets/topic.png" alt="logo" style="height: 150px;padding:2rem; border-radius:20px;"></div>
     </section>
-    <section>
-        <div>
+    <section style="display: flex; justify-content: space-between; align-items: center; padding: 2rem;">
+        <div style="width: 45%;">
             <h2>Nuestro Equipo</h2>
-            <p style="height: 150px;padding:2rem;">Conformado por personal altamente capacitado</p>
-            <button style="background-color: aqua; border-radius:15px; height:50px; width:100px"><a href="campus.html" style="color: rgb(48, 125, 192);">Conocenos</a></button>
-
+            <p style="height: 150px; padding: 2rem;">Conformado por personal altamente capacitado</p>
+            <button style="background-color: aqua; border-radius: 15px; height: 50px; width: 100px;">
+                <a href="campus.html" style="color: rgb(48, 125, 192);">Conócenos</a>
+            </button>
         </div>
-        <div>
-            <div id="features"><img class="topic" src="assets/topic.png" alt="logo" style="height: 150px; padding:2rem;"></div>
-        
-
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="group">
+                    <img src="assets/imagen1.png" alt="Imagen 1">
+                    <img src="assets/imagen2.png" alt="Imagen 2">
+                    <img src="assets/imagen3.png" alt="Imagen 3">
+                    <img src="assets/imagen4.png" alt="Imagen 4">
+                </div>
+                <div aria-hidden class="group">
+                    <img src="assets/imagen1.png" alt="Imagen 1">
+                    <img src="assets/imagen2.png" alt="Imagen 2">
+                    <img src="assets/imagen3.png" alt="Imagen 3">
+                    <img src="assets/imagen4.png" alt="Imagen 4">
+                </div>
+            </div>
         </div>
-        
     </section>
-
     <footer>
         <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
         <a href="admin.html">Acceso Administrador</a>
     </footer>
-
-    
-    <script>
-        function loadTestimonials() {
-            let testimonials = JSON.parse(localStorage.getItem("testimonials")) || [];
-            let container = document.getElementById("testimonial-carousel");
-
-            if (!container) return;
-            container.innerHTML = "";
-
-            testimonials.forEach((testimonial) => {
-                let div = document.createElement("div");
-                div.classList.add("testimonial");
-                div.innerHTML = `<p>"${testimonial.text}"</p><span>- ${testimonial.user}</span>`;
-                container.appendChild(div);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", loadTestimonials);
-    </script>
 </body>
 </html>

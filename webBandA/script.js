@@ -1,27 +1,62 @@
-// Particles.js Configuración
+let clickCount = 0;
+const maxClicks = 15; // Límite de clics antes de bloquearse
+const maxParticles = 150; // Número máximo de partículas permitidas en total
+let clicksEnabled = true; // Bandera para habilitar/deshabilitar clics
+
 particlesJS("particles-js", {
     particles: {
         number: { value: 100, density: { enable: true, value_area: 400 } },
         color: { value: "#FFFFFF" },
         shape: { type: "circle" },
         opacity: { value: 0.5 },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#FFFFFF", opacity: 0.4, width: 1 },
+        size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 1, sync: false } },
+        line_linked: { enable: true, distance: 150, color: "#becacf", opacity: 0.4, width: 1 },
         move: { enable: true, speed: 8, direction: "none", out_mode: "out" }
     },
     interactivity: {
         detect_on: "canvas",
         events: {
             onhover: { enable: true, mode: "grab" },
-            onclick: { enable: true, mode: "push" }
+            onclick: {
+                enable: true,
+                mode: "push"
+            }
         },
         modes: {
             grab: { distance: 200, line_linked: { opacity: 1 } },
-            push: { particles_nb: 10 }
+            push: {
+                particles_nb: 10,
+                out_mode: "destroy"
+            }
         }
     },
     retina_detect: true
 });
+
+// Función para manejar los clics y el reinicio del conteo
+document.getElementById("particles-js").addEventListener("click", function () {
+    if (!clicksEnabled) return; // Si los clics están deshabilitados, no hacer nada
+
+    clickCount++; // Aumenta el contador de clics
+
+    if (clickCount >= maxClicks) {
+        console.log("Límite alcanzado, deshabilitando clics por 10 segundos.");
+        clicksEnabled = false; 
+        window.pJSDom[0].pJS.interactivity.events.onclick.enable = false; 
+
+        // Esperar 10 segundos antes de reiniciar el conteo
+        setTimeout(() => {
+            console.log("Clics habilitados nuevamente.");
+            clickCount = 0;
+            clicksEnabled = true;
+            window.pJSDom[0].pJS.interactivity.events.onclick.enable = true;
+        }, 10000);
+    }
+});
+
+
+
+
 
 // Función para cambiar la barra de "Nosotros"
 function showContent(type) {

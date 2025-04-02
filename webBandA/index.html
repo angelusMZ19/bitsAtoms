@@ -18,29 +18,38 @@
             gap: 2rem;
             padding: 2rem;
             background-color: #000000;
-            color: aliceblue;
-            flex-wrap: wrap;
+            color: rgb(255, 255, 255);
+            flex-wrap: wrap; /* Cambié a wrap para que se acomode mejor en pantallas pequeñas */
+            text-align: center; /* Asegura que el texto se centre en pantallas más pequeñas */
         }
-
+        
         .about img {
-            height: 400px;
-            width: 400px;
-            border-radius: 15px; /* Usando 15px de radio para unificar */
-            padding: 2rem;
+            height: auto;
+            width: 100%;
+            max-width: 400px; /* Asegura que no se estire demasiado */
+            border-radius: 15px;
+            padding: 1rem;
             object-fit: cover;
+            flex-shrink: 0;
         }
-
+        
+        .about .text {
+            max-width: 100%; /* Permitirá que el texto ocupe el 100% en pantallas pequeñas */
+            flex: 1;
+            padding: 1rem; /* Agregar espacio alrededor del texto */
+        }
+        
         .about .text h2 a {
             color: aliceblue;
             text-decoration: none;
             font-size: 1.8rem;
             transition: color 0.3s;
         }
-
+        
         .about .text h2 a:hover {
             color: #00aaff;
         }
-
+        
         .about p {
             padding: 1rem;
             line-height: 1.6;
@@ -48,78 +57,107 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
         }
-
+        
         @media (max-width: 768px) {
             .about {
                 flex-direction: column;
-                text-align: center;
             }
-
+    
             .about img {
-                width: 300px;
-                height: 300px;
+                width: 100%;
+                max-width: 300px;
+                height: auto;
+            }
+            
+            .about .text {
+                max-width: 100%;
+            }
+    
+            .features {
+                flex-direction: column;
+                padding: 20px;
+            }
+    
+            .feature {
+                width: 100%; /* Hace que las características ocupen el 100% del ancho */
+                margin-bottom: 20px; /* Añade espacio entre las características */
             }
         }
-
+    
         .features {
             display: flex;
             justify-content: center;
             gap: 20px;
             padding: 50px;
+            flex-wrap: wrap; /* Permite que las características se acomoden en pantallas más pequeñas */
         }
-
+    
         .feature {
             background-color: #3d3d3d;
             padding: 20px;
             border-radius: 10px;
+            width: 100%;
+            max-width: 350px; /* Limita el ancho de las características */
+            text-align: center;
         }
-
+    
         .carousel-container {
             overflow: hidden;
-            width: 100%; /* Ajuste a 100% para hacerlo flexible */
-            max-width: 940px; /* Ancho máximo para evitar que se vuelva demasiado grande */
+            width: 100%; /* Asegura que ocupe todo el ancho */
+            max-width: 940px;
+            margin: 0 auto; /* Centra el carrusel */
         }
-
+    
         .carousel {
             display: flex;
             width: max-content;
         }
-
+    
         .carousel .group {
             display: flex;
             gap: 0;
             animation: scrolling 15s linear infinite;
             will-change: transform;
         }
-
+    
         .carousel img {
-            width: 400px;
+            width: 100%;
+            max-width: 400px;
             margin: 20px;
         }
-
+    
         @keyframes scrolling {
             0% {
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(calc(-440px * 4)); /* Ajuste basado en el ancho de la imagen + márgenes */
+                transform: translateX(calc(-440px * 4));
             }
         }
-
+    
         .carousel:hover .group {
             animation-play-state: paused;
         }
-
+    
         .carruselIndex img {
-            height: 500px;
+            height: auto;
             width: 100%;
         }
     </style>
+    
 </head>
 <body>
     <header>
         <div id="particles-js"></div>
         <nav>
+            <!-- Botón de menú hamburguesa -->
+            <div class="menu-toggle">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            
+            <!-- Menú de navegación -->
             <ul>
                 <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
                 <li><a href="nosotros.html">Nosotros</a></li>
@@ -151,13 +189,16 @@
         <div id="features"><img class="topic" src="assets/topic.png" alt="logo" style="height: 150px;padding:2rem; border-radius:20px;"></div>
     </section>
     <section style="display: flex; justify-content: space-between; align-items: center; padding: 2rem;">
-        <div style="width: 45%;">
-            <h2>Nuestro Equipo</h2>
-            <p style="height: 150px; padding: 2rem;">Conformado por personal altamente capacitado</p>
-            <button style="background-color: aqua; border-radius: 15px; height: 50px; width: 100px;">
-                <a href="campus.html" style="color: rgb(48, 125, 192);">Conócenos</a>
+        <div style="width: 45%; display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;">
+            <h2 style="margin-bottom: 0.5rem;">Nuestro Equipo</h2>
+            <p style="padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px; line-height: 1.5;">
+                Conformado por personal altamente capacitado
+            </p>
+            <button onclick="location.href='campus.html'" style="background-color: aqua; border-radius: 15px; height: 50px; width: 130px; border: none; cursor: pointer; font-size: 1rem; font-weight: bold; display: flex; align-items: center; justify-content: center; transition: background 0.3s, transform 0.2s; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);">
+                Conócenos
             </button>
         </div>
+        
         <div class="carousel-container">
             <div class="carousel">
                 <div class="group">
@@ -179,5 +220,16 @@
         <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
         <a href="admin.html">Acceso Administrador</a>
     </footer>
+    <script>
+        // Obtener los elementos del menú
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('nav ul');
+    
+        // Agregar evento para abrir/cerrar el menú
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
+    
 </body>
 </html>

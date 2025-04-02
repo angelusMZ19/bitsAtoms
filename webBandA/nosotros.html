@@ -85,15 +85,6 @@
                 display: block;
                 margin-bottom: 10px;
             }
-
-            footer {
-                text-align: center;
-                padding: 20px;
-                background: #000;
-                color: white;
-                margin-top: 40px;
-            }
-
             .profile-card {
                 width: 300px;
                 background-color: white;
@@ -217,6 +208,51 @@
                 width: 300px;
                 margin: 10px;
             }
+
+
+            /* Estilos para el popup */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 60%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #02a2a2;
+}
+
+.modal-text {
+    font-size: 1.1rem;
+    color: #000;
+}
+
         </style>
 </head>
 <body>
@@ -249,12 +285,109 @@
         <button onclick="showContent('valores')">Valores</button>
 
         <div id="content-box">
-            <p id="content-text" style="text-align: center;">...</p>
+            <p id="content-text" style="text-align: center;">Nuestra misión es formar líderes digitales.......Lorem ipsum dolor sit amet consectetur adipiscing elit felis donec odio, neque inceptos massa aliquam pharetra molestie cum penatibus Accumsan ridiculus sapien eu ut metus morbi mi donec pellentesque, fermentum id luctus bibendum maecenas viverra a litora, eget placerat massa praesent urna inceptos fusce penatibus Parturient commodo suscipit ut turpis fusce consequat sodales id curae maecenas, dapibus faucibus quisque nascetur ligula mi euismod sagittis urna, duis nam vulputate dictum erat potenti eu interdum diam</p>
         </div>
     </section>
 
     <h2>Nuestro Equipo</h2>
     <div id="team-members">
+        <div class="profile-card">
+            <div class="header">
+                <div class="gradient"></div>
+                <div class="add-button">+</div>
+            </div>
+            <div class="photo">
+                <img src="assets/imagen1.png" alt="Foto de perfil">
+            </div>
+            <div class="info">
+                <h2 class="name">Daniel Vidal</h2>
+                <p class="role">Abogado</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="icon"></a>
+                <a href="#" class="icon">✉️</a>
+                <a href="#" class="icon">in</a>
+                <a href="#" class="icon"></a>
+            </div>
+            <div class="description">
+                <p style="color: #000;">Daniel es un abogado muy apasionado por su trabajo demostrando las vulnerabilidades presentes en este mundo de las TIC, con su amplia experiencia con clientes en esta área demuestra sus conocimientos plenos en el tema.</p>
+            </div>
+        </div>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <span class="close-btn" id="close-btn">×</span>
+                <div class="modal-text" id="modal-text"></div>
+            </div>
+        </div>
+
+
+
+        <div class="profile-card">
+            <div class="header">
+                <div class="gradient"></div>
+                <div class="add-button">+</div>
+            </div>
+            <div class="photo">
+                <img src="assets/imagen2.png" alt="Foto de perfil">
+            </div>
+            <div class="info">
+                <h2 class="name">Marc Segarra</h2>
+                <p class="role">Diseñador Web</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="icon"></a>
+                <a href="#" class="icon">✉️</a>
+                <a href="#" class="icon">in</a>
+                <a href="#" class="icon"></a>
+            </div>
+            <div class="description">
+                <p style="color: #000;">Marc es un profesional en diseño web muy apasionado por su trabajo y busca demostrar las formas fáciles de desarrollar la creatividad en este mundo en el que la IA se está acaparando todo.</p>
+            </div>
+        </div>
+        <div class="profile-card">
+            <div class="header">
+                <div class="gradient"></div>
+                <div class="add-button">+</div>
+            </div>
+            <div class="photo">
+                <img src="assets/imagen3.png" alt="Foto de perfil">
+            </div>
+            <div class="info">
+                <h2 class="name">Sara López</h2>
+                <p class="role">Desarrolladora de Software</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="icon"></a>
+                <a href="#" class="icon">✉️</a>
+                <a href="#" class="icon">in</a>
+                <a href="#" class="icon"></a>
+            </div>
+            <div class="description">
+                <p style="color: #000;">Sara es una desarrolladora de software con amplia experiencia en la creación de aplicaciones robustas y eficientes. Su pasión por la tecnología la impulsa a explorar nuevas soluciones y desafíos.</p>
+            </div>
+        </div>
+        <div class="profile-card">
+            <div class="header">
+                <div class="gradient"></div>
+                <div class="add-button">+</div>
+            </div>
+            <div class="photo">
+                <img src="assets/imagen4.png" alt="Foto de perfil">
+            </div>
+            <div class="info">
+                <h2 class="name">Carlos Martínez</h2>
+                <p class="role">Experto en Ciberseguridad</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="icon"></a>
+                <a href="#" class="icon">✉️</a>
+                <a href="#" class="icon">in</a>
+                <a href="#" class="icon"></a>
+            </div>
+            <div class="description">
+                <p style="color: #000;">Carlos es un experto en ciberseguridad con un profundo conocimiento en la protección de sistemas y datos. Su enfoque proactivo y su capacidad para anticipar amenazas lo convierten en un activo invaluable para nuestro equipo.</p>
+            </div>
+        </div>
         <div class="profile-card">
             <div class="header">
                 <div class="gradient"></div>
@@ -365,13 +498,33 @@
                 contentText.textContent = 'Nos guiamos por la excelencia, la integridad, la innovación y el compromiso con el aprendizaje continuo.';
             }
         }
+
         const profileCards = document.querySelectorAll('.profile-card');
-profileCards.forEach(card => {
-    const addButton = card.querySelector('.add-button');
-    addButton.addEventListener('click', function() {
-        this.classList.toggle('show-description');
-    });
-});
+        const modal = document.getElementById('modal');
+        const modalText = document.getElementById('modal-text');
+        const closeBtn = document.getElementById('close-btn');
+
+        profileCards.forEach(card => {
+            const addButton = card.querySelector('.add-button');
+                addButton.addEventListener('click', function() {
+                const description = card.querySelector('.description p').textContent;
+                    modalText.textContent = description;  // Set the modal content
+                    modal.style.display = 'flex';  // Show the modal
+                });
+            });
+
+        // Cerrar el modal al hacer clic en la cruz
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';  // Hide the modal
+        });
+
+        // Cerrar el modal al hacer clic fuera del contenido del modal
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
     </script>
 </body>
 </html>

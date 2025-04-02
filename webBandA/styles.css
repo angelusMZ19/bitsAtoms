@@ -7,17 +7,16 @@ body {
     font-style: normal;
     background-color: #000000;
     color: white;
-     box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-
+/* Header */
 header {
     width: 100%;
     height: 100vh;
     background: #000;
     position: relative;
     text-align: center;
-    /* padding: 50px 20px; */
     overflow: hidden;
 }
 
@@ -39,6 +38,12 @@ header {
     margin-top: 15%;
 }
 
+.hero h1 {
+    font-size: 5rem;
+    color: #00F5ED;
+}
+
+/* Navbar */
 nav {
     position: fixed;
     top: 0;
@@ -48,7 +53,7 @@ nav {
     backdrop-filter: blur(10px);
     padding: 25px 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     z-index: 1000;
 }
@@ -78,16 +83,67 @@ nav ul li a:hover {
     color: #00bcd4;
 }
 
-.hero h1 {
-    font-size: 5rem;
-    color: #00F5ED;
+/* Botón del menú hamburguesa */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
 }
 
+.menu-toggle div {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+/* Mostrar el menú hamburguesa en pantallas pequeñas */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 20px 0;
+        transition: transform 0.3s ease;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+
+    nav ul li a {
+        padding-inline: 0;
+        font-size: 18px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav ul li a:hover {
+        color: #00bcd4;
+    }
+}
+
+/* Gallery */
 .gallery .grid {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
+/* Login Container */
 #login-container {
     text-align: center;
     margin: 100px auto;
@@ -114,10 +170,12 @@ nav ul li a:hover {
     border-radius: 15px;
 }
 
+/* Admin Panel */
 #admin-panel {
     padding: 20px;
 }
 
+/* General Section */
 section {
     margin: 20px 0;
     padding: 10px;
@@ -125,6 +183,7 @@ section {
     border-radius: 10px;
 }
 
+/* Features Section */
 .features {
     height: 200px;
     margin: 25px 0;
@@ -141,6 +200,7 @@ section {
     border-radius: 20px;
 }
 
+/* Topic Section */
 .topic {
     margin: 20px 0;
     padding: 30px;
@@ -148,6 +208,7 @@ section {
     border-radius: 10px;
 }
 
+/* Footer */
 footer {
     text-align: center;
     padding: 10px;
@@ -156,5 +217,107 @@ footer {
     margin-top: 20px;
 }
 
+/* Media Queries */
 
-/* esto e sla paare de NOSOTROS */
+/* Para pantallas medianas (tablet) */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        padding-inline: 50px;
+    }
+
+    .gallery .grid {
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    #login-container {
+        width: 90%;
+    }
+
+    .features {
+        height: auto;
+        padding: 20px;
+    }
+
+    .topic {
+        padding: 20px;
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    header {
+        height: 60vh;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+        padding-inline: 30px;
+    }
+
+    .gallery .grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #login-container {
+        width: 90%;
+        margin: 50px auto;
+    }
+
+    .features {
+        height: auto;
+        padding: 20px;
+    }
+
+    .topic {
+        padding: 15px;
+    }
+
+    footer {
+        padding: 15px;
+    }
+}
+
+/* Para pantallas extra pequeñas (móviles muy pequeños) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    nav ul li a {
+        font-size: 12px;
+        padding-inline: 20px;
+    }
+
+    .features {
+        height: auto;
+        padding: 15px;
+    }
+
+    .topic {
+        padding: 10px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}

@@ -15,6 +15,14 @@
     <header>
         <div id="particles-js"></div>
         <nav>
+            <!-- Botón de menú hamburguesa -->
+            <div class="menu-toggle">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            
+            <!-- Menú de navegación -->
             <ul>
                 <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
                 <li><a href="nosotros.html">Nosotros</a></li>
@@ -39,6 +47,16 @@
         <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
         <a href="admin.html">Acceso Administrador</a>
     </footer>
+    <script>
+        // Obtener los elementos del menú
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('nav ul');
+    
+        // Agregar evento para abrir/cerrar el menú
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
     
 </body>
 </html>

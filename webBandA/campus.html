@@ -1,84 +1,362 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus - Bits & Atoms</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script defer src="script.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Campus - Bits & Atoms</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script defer src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    .spaceGaleria {
+      padding-inline: 20%;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-auto-rows: 200px;
+      gap: 8px;
+      width: 90%;
+      margin: auto;
+      padding: 40px 0;
+      grid-auto-flow: dense;
+    }
+
+    .item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .item:nth-child(3n) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .item:nth-child(4n) {
+      grid-column: span 2;
+    }
+
+    .item:nth-child(5n) {
+      grid-row: span 2;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 95vh;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox.active {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox:after {
+      content: "✕";
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .testimonials-section {
+      background: #000;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .testimonials-section h2 {
+      letter-spacing: 4px;
+      font-size: 18px;
+      margin-bottom: 40px;
+      color: #ccc;
+      position: relative;
+    }
+
+    .testimonials-section h2::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: #3b82f6;
+      margin: 10px auto 0;
+    }
+
+    .testimonial-carousel {
+  display: flex;
+  gap: 40px;
+  width: max-content;
+  animation: scrollCarousel 40s linear infinite;
+}
+
+@keyframes scrollCarousel {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.testimonial-carousel:hover {
+  animation-play-state: paused;
+}
+
+
+    .testimonial-card {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 10px;
+      box-shadow: 3px 3px 6px #222;
+      padding: 30px;
+      max-width: 400px;
+      min-width: 300px;
+      flex: 0 0 auto;
+      text-align: left;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .user-info img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .user-info strong {
+      display: block;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .user-info span {
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-auto-rows: 150px;
+      }
+
+      .testimonial-carousel {
+        animation-duration: 60s;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div id="particles-js"></div>
-        <nav>
-            <ul>
-                <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="campus.html">Campus</a></li>
-                <li><a href="multimedia.html">Multimedia</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="inscribete.html">Inscríbete</a></li>
-            </ul>
-        </nav>
-        <div class="hero">
-            <h1>Campus</h1>
+  <header>
+    <div id="particles-js"></div>
+    <nav>
+      <div class="menu-toggle">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul>
+        <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="campus.html">Campus</a></li>
+        <li><a href="multimedia.html">Multimedia</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="inscribete.html">Inscríbete</a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h1>Campus</h1>
+    </div>
+  </header>
+
+  <h1>Galería del Campus</h1>
+  <div class="spaceGaleria">
+    <div class="gallery">
+        <div class="item"><img src="/assets/paisaje1.png" alt="img1"></div>
+        <div class="item"><img src="/assets/paisaje2.png" alt="img2"></div>
+        <div class="item"><img src="/assets/paisaje3.png" alt="img3"></div>
+        <div class="item"><img src="/assets/paisaje4.png" alt="img4"></div>
+        <div class="item"><img src="/assets/paisaje5.png" alt="img5"></div>
+        <div class="item"><img src="/assets/paisaje6.png" alt="img6"></div>
+        <div class="item"><img src="/assets/paisaje7.png" alt="img7"></div>
+        <div class="item"><img src="/assets/paisaje1.png" alt="img1"></div>
+        <div class="item"><img src="/assets/paisaje2.png" alt="img2"></div>
+        <div class="item"><img src="/assets/paisaje3.png" alt="img3"></div>
+        <div class="item"><img src="/assets/paisaje4.png" alt="img4"></div>
+        <div class="item"><img src="/assets/paisaje5.png" alt="img5"></div>
+        <div class="item"><img src="/assets/paisaje6.png" alt="img6"></div>
+        <div class="item"><img src="/assets/paisaje7.png" alt="img7"></div>
+    </div>
+  </div>
+
+  <div id="lightbox" class="lightbox">
+    <img src="" alt="Imagen ampliada">
+  </div>
+
+  <section class="testimonials-section">
+    <h2>TESTIMONIALS</h2>
+    <div class="testimonial-carousel">
+      <div class="testimonial-card">
+        <p>“Lorem ipsum dolor sit amet consectetur adipiscing elit.”</p>
+        <div class="user-info">
+          <img src="assets/imagen1.png" alt="User">
+          <div><strong>USER</strong><span>Degree</span></div>
         </div>
-    </header>
+      </div>
+      <div class="testimonial-card">
+        <p>“Neque inceptos massa aliquam pharetra molestie.”</p>
+        <div class="user-info">
+          <img src="assets/imagen2.png" alt="User">
+          <div><strong>USER</strong><span>Degree</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>“Cum penatibus donec felis odio aliquam nec.”</p>
+        <div class="user-info">
+          <img src="assets/imagen3.png" alt="User">
+          <div><strong>USER</strong><span>Degree</span></div>
+        </div>
+      </div>
+      <!-- Copias para efecto infinito -->
+      <div class="testimonial-card">
+        <p>“Lorem ipsum dolor sit amet consectetur adipiscing elit.”</p>
+        <div class="user-info">
+          <img src="assets/imagen1.png" alt="User">
+          <div><strong>USER</strong><span>Degree</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>“Neque inceptos massa aliquam pharetra molestie.”</p>
+        <div class="user-info">
+          <img src="assets/imagen2.png" alt="User">
+          <div><strong>USER</strong><span>Degree</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>“Cum penatibus donec felis odio aliquam nec.”</p>
+        <div class="user-info">
+          <img src="assets/imagen3.png" alt="User">
+          <div><strong>USER</strong><span>Degree</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h1>Galería del Campus</h1>
-    <div id="campus-gallery" class="gallery"></div>
+  <footer>
+    <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
+    <a href="admin.html">Acceso Administrador</a>
+  </footer>
 
-    <section class="testimonials">
-        <h2>Testimonios</h2>
-        <div id="testimonial-carousel" class="carousel"></div>
-    </section>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('nav ul');
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
 
-    <footer>
-        <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
-        <a href="admin.html">Acceso Administrador</a>
-    </footer>
-
-    <script>
-        function loadCampusPhotos() {
-            let photos = JSON.parse(localStorage.getItem("campusPhotos")) || [];
-            let container = document.getElementById("campus-gallery");
-
-            if (!container) return;
-            container.innerHTML = "";
-
-            photos.forEach((photo) => {
-                let img = document.createElement("img");
-                img.src = photo;
-                img.classList.add("gallery-img");
-                container.appendChild(img);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", loadCampusPhotos);
-    </script>
-    
-    <script>
-        function loadTestimonials() {
-            let testimonials = JSON.parse(localStorage.getItem("testimonials")) || [];
-            let container = document.getElementById("testimonial-carousel");
-
-            if (!container) return;
-            container.innerHTML = "";
-
-            testimonials.forEach((testimonial) => {
-                let div = document.createElement("div");
-                div.classList.add("testimonial");
-                div.innerHTML = `<p>"${testimonial.text}"</p><span>- ${testimonial.user}</span>`;
-                container.appendChild(div);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", loadTestimonials);
-    </script>
-    
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    document.querySelectorAll('.gallery .item img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      });
+    });
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg) {
+        lightbox.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
+
+
+<!-- 
+<section class="testimonials">
+    <h2>Testimonios</h2>
+    <div id="testimonial-carousel" class="carousel"></div>
+</section> -->
+<!-- <script>
+    function loadTestimonials() {
+        let testimonials = JSON.parse(localStorage.getItem("testimonials")) || [];
+        let container = document.getElementById("testimonial-carousel");
+
+        if (!container) return;
+        container.innerHTML = "";
+
+        testimonials.forEach((testimonial) => {
+            let div = document.createElement("div");
+            div.classList.add("testimonial");
+            div.innerHTML = `<p>"${testimonial.text}"</p><span>- ${testimonial.user}</span>`;
+            container.appendChild(div);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadTestimonials);
+</script> -->
+<!-- <script>
+    function loadCampusPhotos() {
+        let photos = JSON.parse(localStorage.getItem("campusPhotos")) || [];
+        let container = document.getElementById("campus-gallery");
+
+        if (!container) return;
+        container.innerHTML = "";
+
+        photos.forEach((photo) => {
+            let img = document.createElement("img");
+            img.src = photo;
+            img.classList.add("gallery-img");
+            container.appendChild(img);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", loadCampusPhotos);
+</script> -->

@@ -195,18 +195,24 @@
                 align-items: center;
                 opacity: 0;
                 transition: opacity 0.3s ease;
+                z-index: -1;
             }
 
             #team-members {
-                display: flex;
-                flex-wrap: wrap;
+                display:grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
                 justify-content: center;
-                padding: 20px;
+                padding: 40px 20px;
+                max-width: 1000px;
+                margin: 0 auto;
             }
 
+
             .profile-card {
+                
                 width: 300px;
-                margin: 10px;
+                margin: 40px;
             }
 
 
@@ -244,6 +250,7 @@
     transition: color 0.3s ease;
 }
 
+
 .close-btn:hover {
     color: #02a2a2;
 }
@@ -259,6 +266,14 @@
     <header>
         <div id="particles-js"></div>
         <nav>
+            <!-- Botón de menú hamburguesa -->
+            <div class="menu-toggle">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            
+            <!-- Menú de navegación -->
             <ul>
                 <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
                 <li><a href="nosotros.html">Nosotros</a></li>
@@ -285,11 +300,11 @@
         <button onclick="showContent('valores')">Valores</button>
 
         <div id="content-box">
-            <p id="content-text" style="text-align: center;">Nuestra misión es formar líderes digitales.......Lorem ipsum dolor sit amet consectetur adipiscing elit felis donec odio, neque inceptos massa aliquam pharetra molestie cum penatibus Accumsan ridiculus sapien eu ut metus morbi mi donec pellentesque, fermentum id luctus bibendum maecenas viverra a litora, eget placerat massa praesent urna inceptos fusce penatibus Parturient commodo suscipit ut turpis fusce consequat sodales id curae maecenas, dapibus faucibus quisque nascetur ligula mi euismod sagittis urna, duis nam vulputate dictum erat potenti eu interdum diam</p>
+            <p id="content-text" style="text-align: center;">Nuestra misión es formar líderes digitales.......Lorem ipsum tung tung tung tung tung tung sahur dolor sit amet consectetur adipiscing elit felis donec odio, neque inceptos massa aliquam pharetra molestie cum penatibus Accumsan ridiculus sapien eu ut metus morbi mi donec pellentesque, fermentum id luctus bibendum maecenas viverra a litora, eget placerat massa praesent urna inceptos fusce penatibus Parturient commodo suscipit ut turpis fusce consequat sodales id curae maecenas, dapibus faucibus quisque nascetur ligula mi euismod sagittis urna, duis nam vulputate dictum erat potenti eu interdum diam</p>
         </div>
     </section>
 
-    <h2>Nuestro Equipo</h2>
+    <h2>MIEMBROS DEL EQUIPO</h2>
     <div id="team-members">
         <div class="profile-card">
             <div class="header">
@@ -525,6 +540,16 @@
             }
         });
 
+    </script>
+    <script>
+        // Obtener los elementos del menú
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('nav ul');
+        // Trucha
+        // Agregar evento para abrir/cerrar el menú
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
     </script>
 </body>
 </html>

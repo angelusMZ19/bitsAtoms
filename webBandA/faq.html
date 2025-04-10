@@ -1,62 +1,181 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - Bits & Atoms</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script defer src="script.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ - Bits & Atoms</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script defer src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    .faq-section {
+      background-color: #000;
+      color: white;
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 0 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #555;
+    }
+
+    .faq-question {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 20px 0;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      letter-spacing: 2px;
+      transition: color 0.3s ease;
+    }
+
+    .faq-question .arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active .arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .faq-answer p {
+      padding: 0 0 20px;
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+
+    .faq-answer strong {
+      display: block;
+      margin-top: 1em;
+      color: #fff;
+    }
+
+    .faq-answer u {
+      text-underline-offset: 3px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div id="particles-js"></div>
-        <nav>
-            <!-- Botón de menú hamburguesa -->
-            <div class="menu-toggle">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            
-            <!-- Menú de navegación -->
-            <ul>
-                <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="campus.html">Campus</a></li>
-                <li><a href="multimedia.html">Multimedia</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="inscribete.html">Inscríbete</a></li>
-            </ul>
-        </nav>
-        <div class="hero">
-            <h1>Preguntas Frecuentes</h1>
-            
-        </div>
-    </header>
+  <header>
+    <div id="particles-js"></div>
+    <nav>
+      <div class="menu-toggle">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul>
+        <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;" /></a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="campus.html">Campus</a></li>
+        <li><a href="multimedia.html">Multimedia</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEHwrhSK9Qroa-Xpf2ZQzKGQMeQwmc9vyWlHaqcbuFoMbYZA/viewform?pli=1"
+                class="btn-inscribete">Inscríbete</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h1>Preguntas Frecuentes</h1>
+    </div>
+  </header>
 
-    
-    <div id="faq-content">
-        <p>Aquí irán las preguntas frecuentes...</p>
+  <section class="faq-section">
+    <div class="faq-item">
+      <button class="faq-question">Sobre el Instituto <span class="arrow">&#9662;</span></button>
+      <div class="faq-answer">
+        <p>
+          <strong><u>¿Qué diferencia a Bits and Atoms de otros centros educativos en IA e IoT?</u></strong>
+          Bits and Atoms destaca por su enfoque de aprendizaje experiencial, "aprender haciendo", y su estrecha colaboración con la industria. Esto garantiza que los estudiantes reciban una formación relevante y actualizada.
+          Además, cuenta con el apoyo de importantes empresas del sector tecnológico, lo que les proporciona un contacto directo con el mundo profesional.
+          
+          <strong><u>¿Bits and Atoms dispone de instalaciones para el desarrollo de proyectos prácticos?</u></strong>
+          Sí, Bits and Atoms cuenta con instalaciones como un Fab Lab, un taller de mecatrónica, una sala de impresión 3D y un estudio de producción audiovisual, diseñados para el desarrollo de proyectos prácticos e innovadores.
+        </p>
+      </div>
     </div>
 
-    <footer>
-        <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
-        <a href="admin.html">Acceso Administrador</a>
-    </footer>
-    <script>
-        // Obtener los elementos del menú
-        const menuToggle = document.querySelector('.menu-toggle');
-        const menu = document.querySelector('nav ul');
-    
-        // Agregar evento para abrir/cerrar el menú
-        menuToggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
-        });
-    </script>
-    
+    <div class="faq-item">
+      <button class="faq-question">Programa de Formación <span class="arrow">&#9662;</span></button>
+      <div class="faq-answer">
+        <p>
+          <strong><u>¿Cuánto dura el programa de formación?</u></strong>
+          El programa está diseñado para durar un año, cubriendo tanto la formación teórica como la práctica en Bits and Atoms y empresas asociadas.
+
+          <strong><u>¿Cuánto cuesta el programa de formación?</u></strong>
+          El programa puede ser completamente gratuito para los estudiantes, ya que los costos son cubiertos por las empresas patrocinadoras.
+
+          <strong><u>¿Qué áreas de especialización ofrecemos?</u></strong>
+          En Bits and Atoms nos especializamos en Inteligencia Artificial e IoT, ofreciendo programas de formación en estas áreas.
+
+          <strong><u>¿Cómo se organiza la combinación de formación teórica y prácticas?</u></strong>
+          Los estudiantes reciben formación teórica por las mañanas en las instalaciones de Bits and Atoms y realizan prácticas por las tardes. Esta estructura garantiza una perfecta integración entre teoría y práctica.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Proceso de Selección <span class="arrow">&#9662;</span></button>
+      <div class="faq-answer">
+        <p>
+          <strong><u>¿Cuál es el proceso de selección de estudiantes?</u></strong>
+          El proceso de selección comienza con un formulario de solicitud en nuestro sitio web. Luego, se convoca a entrevistas presenciales para evaluar motivación y habilidades.
+
+          <strong><u>¿Qué tipo de perfil de estudiante encaja en Bits and Atoms?</u></strong>
+          Se aceptan perfiles técnicos, creativos, de gestión o marketing. No se requiere experiencia previa, pero sí motivación. La diversidad es clave en nuestro equipo multidisciplinario.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
+    <a href="admin.html">Acceso Administrador</a>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('nav ul');
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+  </script>
+
+  <script>
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(button => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const isOpen = button.classList.contains('active');
+
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight = null);
+        document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+
+        if (!isOpen) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          button.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>

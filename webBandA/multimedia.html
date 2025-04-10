@@ -1,17 +1,236 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multimedia - Bits & Atoms</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multimedia - Bits & Atoms</title>
+    <title>Bits & Atoms</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script defer src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        .gallery {
+            width: 80%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
+        .main-display {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .main-display img,
+        .main-display iframe,
+        .main-display video {
+            width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .thumbnails {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 10px;
+        }
+
+        .thumbnail,
+        .video-thumbnail {
+            width: 120px;
+            height: 80px;
+            flex: 0 0 auto;
+            border-radius: 4px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.3s;
+        }
+
+        .thumbnail:hover,
+        .video-thumbnail:hover {
+            border-color: white;
+        }
+
+        .video-thumbnail {
+            position: relative;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-thumbnail::after {
+            content: "▶";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .carousel-button.left {
+            left: 0;
+        }
+
+        .carousel-button.right {
+            right: 0;
+        }
+
+        .podcast {
+            background-color: #000;
+            padding: 60px 20px;
+            color: white;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .podcast h2 {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .podcast h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #6b6bff, #6b6bff);
+        }
+
+        .podcast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            justify-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .podcast-card {
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .podcast-card img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #ddd;
+        }
+
+        .podcast-card h3 {
+            margin: 0 0 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .podcast-card p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            background: #000;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .modal-content iframe {
+            border-radius: 10px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <div id="particles-js"></div>
@@ -22,84 +241,200 @@
                 <div></div>
                 <div></div>
             </div>
-            
+
             <!-- Menú de navegación -->
             <ul>
-                <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
+                <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo"
+                            style="height: 25px;"></a></li>
                 <li><a href="nosotros.html">Nosotros</a></li>
                 <li><a href="campus.html">Campus</a></li>
                 <li><a href="multimedia.html">Multimedia</a></li>
                 <li><a href="faq.html">FAQ</a></li>
-                <li><a href="inscribete.html">Inscríbete</a></li>
+                <li>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEHwrhSK9Qroa-Xpf2ZQzKGQMeQwmc9vyWlHaqcbuFoMbYZA/viewform?pli=1"
+                        class="btn-inscribete">Inscríbete</a>
+                </li>
             </ul>
         </nav>
         <div class="hero">
-            <h1>Multimedia</h1>
+            <h1>Nosotros</h1>
         </div>
     </header>
+    <section class="gallery">
+        <h2>Galería Multimedia</h2>
 
-    <h1>Galería Multimedia</h1>
-    <div id="media-gallery" class="gallery"></div>
+        <div class="main-display" id="mainDisplay">
+            <img src="assets/imagen1.png" alt="Principal" />
+        </div>
 
-    <h1>Podcasts</h1>
-    <div id="podcast-list"></div>
+        <div class="carousel-container">
+            <button class="carousel-button left" onclick="moveCarousel(-1)">&#10094;</button>
+            <div class="thumbnails" id="thumbnails">
+                <img class="thumbnail" src="assets/imagen1.png" data-type="img" />
+                <img class="thumbnail" src="assets/imagen2.png" data-type="img" />
+                <div class="video-thumbnail" data-type="youtube" data-id="LlFmWpZpP-8">
+                    <img src="https://img.youtube.com/vi/LlFmWpZpP-8/mqdefault.jpg" />
+                </div>
+                <img class="thumbnail" src="assets/paisaje1.png" data-type="img" />
+                <img class="thumbnail" src="assets/paisaje5.png" data-type="img" />
+                <img class="thumbnail" src="assets/imagen3.png" data-type="img" />
+                <img class="thumbnail" src="assets/paisaje2.png" data-type="img" />
+                <img class="thumbnail" src="assets/paisaje7.png" data-type="img" />
+                <img class="thumbnail" src="assets/imagen1.png" data-type="img" />
+                <img class="thumbnail" src="assets/imagen2.png" data-type="img" />
+                <div class="video-thumbnail" data-type="youtube" data-id="LlFmWpZpP-8">
+                    <img src="https://img.youtube.com/vi/LlFmWpZpP-8/mqdefault.jpg" />
+                </div>
+                <img class="thumbnail" src="assets/paisaje1.png" data-type="img" />
+                <img class="thumbnail" src="assets/paisaje5.png" data-type="img" />
+                <img class="thumbnail" src="assets/imagen3.png" data-type="img" />
+                <img class="thumbnail" src="assets/paisaje2.png" data-type="img" />
+                <img class="thumbnail" src="assets/paisaje7.png" data-type="img" />
+            </div>
+            <button class="carousel-button right" onclick="moveCarousel(1)">&#10095;</button>
+        </div>
+    </section>
+    <!-- seccion del podcast -->
+    <section class="podcast">
+        <h2>PODCAST SECTION:</h2>
+        <div class="podcast-grid">
+            <div class="podcast-card" data-video-id="LlFmWpZpP-8">
+                <img src="assets/paisaje6.png" alt="Podcast" />
+                <div>
+                    <h3>Título del episodio</h3>
+                    <p>Descripción breve del contenido del episodio.</p>
+                </div>
+            </div>
+            <div class="podcast-card" data-video-id="LlFmWpZpP-8">
+                <img src="assets/paisaje6.png" alt="Podcast" />
+                <div>
+                    <h3>Otro episodio</h3>
+                    <p>Otro texto descriptivo para mostrar.</p>
+                </div>
+            </div>
+            <div class="podcast-card" data-video-id="LlFmWpZpP-8">
+                <img src="assets/paisaje6.png" alt="Podcast" />
+                <div>
+                    <h3>Título del episodio</h3>
+                    <p>Descripción breve del contenido del episodio.</p>
+                </div>
+            </div>
+            <div class="podcast-card" data-video-id="LlFmWpZpP-8">
+                <img src="assets/paisaje6.png" alt="Podcast" />
+                <div>
+                    <h3>Otro episodio</h3>
+                    <p>Otro texto descriptivo para mostrar.</p>
+                </div>
+            </div>
+            <div class="podcast-card" data-video-id="LlFmWpZpP-8">
+                <img src="assets/paisaje6.png" alt="Podcast" />
+                <div>
+                    <h3>Título del episodio</h3>
+                    <p>Descripción breve del contenido del episodio.</p>
+                </div>
+            </div>
+            <div class="podcast-card" data-video-id="LlFmWpZpP-8">
+                <img src="assets/paisaje6.png" alt="Podcast" />
+                <div>
+                    <h3>Otro episodio</h3>
+                    <p>Otro texto descriptivo para mostrar.</p>
+                </div>
+            </div>
+            <div class="podcast-card" data-video-id="LlFmWpZpP-8">
+                <img src="assets/paisaje6.png" alt="Podcast" />
+                <div>
+                    <h3>Título del episodio</h3>
+                    <p>Descripción breve del contenido del episodio.</p>
+                </div>
+            </div>
+            <div class="podcast-card" data-video-id="LlFmWpZpP-8">
+                <img src="assets/paisaje6.png" alt="Podcast" />
+                <div>
+                    <h3>Otro episodio</h3>
+                    <p>Otro texto descriptivo para mostrar.</p>
+                </div>
+            </div>
+            <div class="podcast-card" data-video-id="LlFmWpZpP-8">
+                <img src="assets/paisaje6.png" alt="Podcast" />
+                <div>
+                    <h3>Otro episodio</h3>
+                    <p>Otro texto descriptivo para mostrar.</p>
+                </div>
+            </div>
+            <!-- Agrega más tarjetas con su propio data-video-id -->
+        </div>
+    </section>
+
+    <!-- Modal para video -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <iframe id="videoFrame" width="100%" height="480" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
 
     <footer>
-        <p>&copy; 2025 Bits & Atoms. Todos los derechos reservados.</p>
-        <a href="admin.html">Acceso Administrador</a>
+        &copy; 2025 Bits & Atoms. Todos los derechos reservados.
     </footer>
 
     <script>
-        function loadMedia() {
-            let media = JSON.parse(localStorage.getItem("multimedia")) || [];
-            let container = document.getElementById("media-gallery");
+        const mainDisplay = document.getElementById("mainDisplay");
+        const thumbnails = document.querySelectorAll(".thumbnail, .video-thumbnail");
+        const thumbnailRow = document.getElementById("thumbnails");
 
-            if (!container) return;
-            container.innerHTML = "";
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener("click", () => {
+                const type = thumbnail.dataset.type;
+                const src = thumbnail.src || thumbnail.querySelector('img')?.src;
 
-            media.forEach((item) => {
-                let mediaElement;
-                if (item.endsWith(".mp4")) {
-                    mediaElement = document.createElement("video");
-                    mediaElement.src = item;
-                    mediaElement.controls = true;
-                } else {
-                    mediaElement = document.createElement("img");
-                    mediaElement.src = item;
+                if (type === "img") {
+                    mainDisplay.innerHTML = `<img src="${src}" alt="Imagen principal">`;
+                } else if (type === "youtube") {
+                    const videoId = thumbnail.dataset.id;
+                    mainDisplay.innerHTML = `
+            <iframe width="100%" height="600" 
+              src="https://www.youtube.com/embed/${videoId}?autoplay=1"
+              frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>`;
                 }
-                container.appendChild(mediaElement);
             });
-        }
-
-        function loadPodcasts() {
-            let podcasts = JSON.parse(localStorage.getItem("podcasts")) || [];
-            let container = document.getElementById("podcast-list");
-
-            if (!container) return;
-            container.innerHTML = "";
-
-            podcasts.forEach((podcast) => {
-                let div = document.createElement("div");
-                div.classList.add("podcast-item");
-                div.innerHTML = `<strong>${podcast.title}</strong> - <a href="${podcast.url}" target="_blank">Escuchar</a>`;
-                container.appendChild(div);
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            loadMedia();
-            loadPodcasts();
         });
+
+        let scrollPosition = 0;
+        const scrollAmount = 140; // ancho de cada thumbnail aprox (incluyendo margen)
+
+        function moveCarousel(direction) {
+            const containerWidth = document.querySelector(".carousel-container").offsetWidth;
+            const maxScroll = thumbnailRow.scrollWidth - containerWidth;
+
+            scrollPosition += direction * scrollAmount;
+            if (scrollPosition < 0) scrollPosition = 0;
+            if (scrollPosition > maxScroll) scrollPosition = maxScroll;
+
+            thumbnailRow.style.transform = `translateX(-${scrollPosition}px)`;
+        }
     </script>
     <script>
-        // Obtener los elementos del menú
-        const menuToggle = document.querySelector('.menu-toggle');
-        const menu = document.querySelector('nav ul');
-    
-        // Agregar evento para abrir/cerrar el menú
-        menuToggle.addEventListener('click', () => {
-            menu.classList.toggle('active');
+        const podcastCards = document.querySelectorAll('.podcast-card');
+        const videoModal = document.getElementById('videoModal');
+        const videoFrame = document.getElementById('videoFrame');
+
+        podcastCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const videoId = card.dataset.videoId;
+                videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                videoModal.style.display = 'flex';
+            });
         });
+
+        function closeModal() {
+            videoModal.style.display = 'none';
+            videoFrame.src = ''; // Detiene el video
+        }
+
     </script>
 </body>
+
 </html>

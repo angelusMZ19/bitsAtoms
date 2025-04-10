@@ -54,20 +54,23 @@ nav {
     background: rgba(0, 0, 0, 0.205);
     backdrop-filter: blur(10px);
     padding: 25px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     z-index: 1000;
+
+    display: flex;
+    justify-content: center; /* Centramos el contenido */
+    align-items: center;
 }
 
+/* Contenedor de navegación centrado */
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 40px; /* espacio entre enlaces */
     padding: 0;
     margin: 0;
 }
 
+/* Estilo de los elementos */
 nav ul li {
     display: inline;
 }
@@ -77,13 +80,14 @@ nav ul li a {
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
-    padding-inline: 70px;
+    padding: 8px 16px;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
     color: #00bcd4;
 }
+
 
 /* Botón del menú hamburguesa */
 .menu-toggle {
@@ -209,7 +213,21 @@ section {
     background-color: #3d3d3d;
     border-radius: 10px;
 }
-
+.btn-inscribete {
+    background-color: #00F5ED;
+    color: rgb(4, 4, 4);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-inscribete:hover {
+    background-color: #1a5f69;
+  }
+  
 /* Footer */
 footer {
     text-align: center;

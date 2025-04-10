@@ -190,25 +190,64 @@
         animation-duration: 60s;
       }
     }
+    .carousel-container {
+  overflow: hidden;
+  width: 100%;
+  background-color: #f7f7f7;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 40px;
+  animation: scroll 20s linear infinite;
+  width: fit-content;
+}
+
+.testimonial {
+  min-width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+/* Animación personalizada */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
   </style>
 </head>
 <body>
   <header>
     <div id="particles-js"></div>
     <nav>
-      <div class="menu-toggle">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <ul>
-        <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
-        <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="campus.html">Campus</a></li>
-        <li><a href="multimedia.html">Multimedia</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="inscribete.html">Inscríbete</a></li>
-      </ul>
+        <!-- Botón de menú hamburguesa -->
+        <div class="menu-toggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!-- Menú de navegación -->
+        <ul>
+            <li><a href="index.html"><img class="logoImg" src="assets/logo.png" alt="logo" style="height: 25px;"></a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="campus.html">Campus</a></li>
+            <li><a href="multimedia.html">Multimedia</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEHwrhSK9Qroa-Xpf2ZQzKGQMeQwmc9vyWlHaqcbuFoMbYZA/viewform?pli=1"
+                  class="btn-inscribete">Inscríbete</a>
+          </li>
+        </ul>
     </nav>
     <div class="hero">
       <h1>Campus</h1>
@@ -232,6 +271,9 @@
         <div class="item"><img src="/assets/paisaje5.png" alt="img5"></div>
         <div class="item"><img src="/assets/paisaje6.png" alt="img6"></div>
         <div class="item"><img src="/assets/paisaje7.png" alt="img7"></div>
+        <div class="item"><img src="/assets/paisaje1.png" alt="img1"></div>
+        <div class="item"><img src="/assets/paisaje2.png" alt="img2"></div>
+        <div class="item"><img src="/assets/paisaje3.png" alt="img3"></div>
     </div>
   </div>
 
@@ -294,11 +336,6 @@
   </footer>
 
   <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('nav ul');
-    menuToggle.addEventListener('click', () => {
-      menu.classList.toggle('active');
-    });
 
     // Lightbox
     const lightbox = document.getElementById('lightbox');
@@ -315,6 +352,28 @@
       }
     });
   </script>
+  <script>
+    const track = document.getElementById('carousel-track');
+    const testimonials = track.children;
+  
+    // Clonar elementos
+    for (let i = 0; i < testimonials.length; i++) {
+      const clone = testimonials[i].cloneNode(true);
+      track.appendChild(clone);
+    }
+  </script>
+  <script>
+    // Obtener los elementos del menú
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('nav ul');
+
+    // Agregar evento para abrir/cerrar el menú
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+</script>
+
+  
 </body>
 </html>
 
